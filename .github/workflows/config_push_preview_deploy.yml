@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@0717577d45739eb3c851188b29f50ed6c0b2194e # v2
         
       - name: Get asyncapi file in the commit
         id: changed_files
@@ -40,7 +40,7 @@ jobs:
       
       - name: Extract Application Version ID from asyncapiFile
         if: ${{ steps.asyncapi.outputs.asyncFile }}
-        uses: tmelliottjr/extract-regex-action@v1.4.0
+        uses: tmelliottjr/extract-regex-action@d05d36c69d95c0682a6c700f606c50b71c4da34a # v1.4.0
         id: epApplicationVersionId
         with:
           regex: '(?<=x-ep-application-version-id\\": \\")(.*?)(?=\\")' 
@@ -49,7 +49,7 @@ jobs:
 
       - name: Promote Application Version
         if: ${{ steps.epApplicationVersionId.outputs.resultString }}
-        uses: SolaceDev/solace-ep-config-push@v0.1.0
+        uses: SolaceDev/solace-ep-config-push@abf0dfcb681f9b31dc92680d587063d63cc9b037 # v0.1.0
         with:
           SOLACE_CLOUD_TOKEN: ${{ secrets.SOLACE_CLOUD_TOKEN }}
           APPLICATION_VERSION_ID: ${{ steps.epApplicationVersionId.outputs.resultString }}
