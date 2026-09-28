@@ -51,7 +51,7 @@ jobs:
       - name: Generate Preview Application Version Deployment Plan
         if: ${{ steps.epApplicationVersionId.outputs.resultString }}
         id: plan
-        uses: SolaceDev/solace-ep-config-push@abf0dfcb681f9b31dc92680d587063d63cc9b037 # v0.1.0
+        uses: SolaceDev/solace-ep-config-push@dd4284a2a5ee26a8a386c480dd0a805a5a7fd996 # v0.1.1
         with:
           SOLACE_CLOUD_TOKEN: ${{ secrets.SOLACE_CLOUD_TOKEN }}
           APPLICATION_VERSION_ID: ${{ steps.epApplicationVersionId.outputs.resultString }}
